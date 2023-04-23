@@ -2,18 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {Text, View, FlatList, TouchableOpacity, StatusBar, Image, ScrollView, ImageBackground, } from 'react-native';
 //import Icon from 'react-native-vector-icons/Ionicons';
 const App = ()=> {
-  const [lokasi, setlokasi] = useState([
-    {
-      nama: 'Mau apa Hari Ini?'
-    },
-  ])
-
-  const [lokasiSeleksi, setLokasiSeleksi] = useState ({
-    nama: 'Makanan'
-  });
-
-  const [dataTrending, setDataTrending] = useState([
-    {
+  const [need, setneed] = useState([
+     {
       nama :'Motor'
     },
     {
@@ -22,36 +12,103 @@ const App = ()=> {
     {
       nama :'Makanan'
     },
-  
+    
+  ])
+
+  const [needChoice, setNeedChoice] = useState ({
+    nama: 'Makanan'
+  });
+
+  const [dataTrending, setDataTrending] = useState([
+ {
+      namaMakanan: 'RotiBakar88',
+      jarakResto: '0.3 km',
+      rating: '4.8',
+      type: 'bakery & cake',
+    },  
+  {
+      namaMakanan: 'McDonalds',
+      jarakResto: '7.1 km',
+      rating: '4.8',
+      type: 'fast food',
+    }, 
+    {
+      namaMakanan: 'Rumah Makan Sakato',
+      jarakResto: '1.2 km',
+      rating: '4.3',
+      type: 'padang',
+    }, 
+    {
+      namaMakanan: 'La Perle Noire',
+      jarakResto: '3.3 km',
+      rating: '4.2',
+      type: 'pizza & pasta',
+    }, 
+     {
+      namaMakanan: 'Pizza Klasik',
+      jarakResto: '2.8 km',
+      rating: '4.3',
+      type: 'pizza & pasta',
+    }, 
+     {
+      namaMakanan: 'Steakhouse Premium',
+      jarakResto: '7.1 km',
+      rating: '4.8',
+      type: 'beef',
+    }, 
+     {
+      namaMakanan: 'Sushi Kenangan',
+      jarakResto: '0.3 km',
+      rating: '4.8',
+      type: 'japanese',
+    }, 
+     {
+      namaMakanan: 'Warung Maknyus',
+      jarakResto: '0.3 km',
+      rating: '4.8',
+      type: 'rice',
+    }, 
+     {
+      namaMakanan: 'Cafe Santai',
+      jarakResto: '0.8 km',
+      rating: '4.7',
+      type: 'bakery & cake',
+    }, 
+     {
+      namaMakanan: 'Sate Padang Pak Jono',
+      jarakResto: '6.2 km',
+      rating: '4.1',
+      type: 'satay',
+    }, 
   ]);
   return (
     <View style={{flex:1, backgroundColor:'#8B0000'}}>
       <StatusBar backgroundColor='#8B0000' barStyle="dark-content"/>
       <View style={{marginTop:20, marginLeft:20, marginRight:20, marginBotton:20,}}>
-        <Text style={{fontSize: 25, fontweight: 'bold', color: '#FFFFFF'}}>
+        <Text style={{fontSize: 25, fontweight: '300', color: '#FFFFFF'}}>
         ANTER<Text style={{color: '#000000'}}>AJA</Text>
         </Text>
       </View>
       <View>
       <FlatList
-      data={lokasi}
+      data={need}
       horizontal
        showsHorizontalScrollIndicator={false}
       renderItem={({item}) => (
         <TouchableOpacity style={{
         marginRight: 20, 
         backgroundColor:
-        lokasiSeleksi.nama == item.nama ? '#000000' : '#FFFFFF',
+        needChoice.nama == item.nama ? '#000000' : '#FFFFFF',
         elevation:3,
-        paddingHorizontal: 130,
+        paddingHorizontal: 50,
         paddingVertical : 15,
         marginBotton: 10,
         borderRadius : 15,
-        marginLeft : 20,
+        marginLeft : 1,
         }}>
           <Text
           style={{
-            color : lokasiSeleksi.nama == item.nama ? '#FFFFFF' : '#000000',
+            color : needChoice.nama == item.nama ? '#FFFFFF' : '#000000',
           }}>
           {item.nama}
           </Text>
@@ -103,7 +160,7 @@ const App = ()=> {
         marginLeft : 5,
         }}>
         <Image source={item.image}
-        style={{width: 200, height: 300, marginTop:10, marginBottom:10, borderRadius:3,}}
+        style={{width: 200, height: 100, marginTop:30, marginBottom:30, borderRadius:3,}}
         resizeMode={'cover'}
         />
           <Text
@@ -112,7 +169,7 @@ const App = ()=> {
             fontSize: 25,
             fontWeight:'bold',
           }}>
-          {item.namaFilm}
+          {item.namaMakanan}
           </Text>
           <Text
           style={{
@@ -120,37 +177,19 @@ const App = ()=> {
             fontSize: 18,
             fontWeight:'300',
           }}>
-          {item.jenisFilm}
+          {item.jarakResto}
           </Text>
           <Text
           style={{
             color : '#000000',
           }}>
-          {item.director}
+          {item.rating}
           </Text>
-          <Text
+           <Text
           style={{
             color : '#000000',
           }}>
-          {item.producer}
-          </Text>
-          <Text
-          style={{
-            color : '#000000',
-          }}>
-          {item.penulis}
-          </Text>
-          <Text
-          style={{
-            color : '#000000',
-          }}>
-          {item.produksi}
-          </Text>
-          <Text
-          style={{
-            color : '#000000',
-          }}>
-          {item.casts}
+          {item.type}
           </Text>
         </TouchableOpacity>
       )}
@@ -160,27 +199,32 @@ const App = ()=> {
       <View
         style={{
           flexDirection: 'row',
-          paddingTop: 5,
+          paddingTop: 30,
           backgroundColor: '#FFFFFF',
         }}>
         <TouchableOpacity
           style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-          <Text style={{color: '#4169e1'}}>Playing</Text> 
+          <Text style={{color: '#4169e1'}}>Home</Text> 
         </TouchableOpacity>
         <TouchableOpacity
           style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-          <Text style={{color: '#bdbdbd'}}>Search</Text>
+          <Text style={{color: '#bdbdbd'}}>Activity</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-          <Text style={{color: '#bdbdbd'}}>Theater</Text>
+          <Text style={{color: '#bdbdbd'}}>Payment</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-          <Text style={{color: '#bdbdbd'}}>User</Text>
+          <Text style={{color: '#bdbdbd'}}>Messages</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+          <Text style={{color: '#bdbdbd'}}>Account</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
+
 };
 export default App;
